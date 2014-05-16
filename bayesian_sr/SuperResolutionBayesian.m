@@ -7,7 +7,7 @@
 % Date:            05/2014
 % 
 % [1] C. Liu, and D. Sun, "On Bayesian Adaptive Video Super Resolution,"
-% IEEE Trans. on Pattern Analysis and Machine Intelligence, Feb. 2014.
+% IEEE Trans. onï¿½Pattern Analysis and Machine Intelligence, Feb. 2014.
 % *************************************************************************
 
 clear all; close all;
@@ -25,7 +25,7 @@ opt(1).maxnbf = min(opt.nFrames, 3); % maximum frame numbers for reference
 opt(1).eps = 0.0001;         % iteration stop criteria
 opt(1).eps_out = 0.00001;    % iteration stop criteria
 opt(1).eps_blur = 0.0001;    % iteration stop criteria
-opt(1).eta = 2; % for derivative of image
+opt(1).eta = 0.02; % for derivative of image
 opt(1).xi = 0.7; % for derivative of kernel
 opt(1).alpha = 1;  % for noise
 opt(1).beta = 0.1; % for noise
