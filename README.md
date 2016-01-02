@@ -9,8 +9,11 @@ SuperResolutionBayesian_s.m
 
 # description of folders
 /Data: contains test sequneces
+
 /functions: contains functions for the program
+
 /functions/CLG-TV-matlab: contains functions for optical flow algorithm [2]
+
 /Result: results of the program are saved here
 
 # contact
