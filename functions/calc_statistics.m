@@ -19,7 +19,8 @@ L = 1; %dynamic range
 if iscell(vid_est) 
 %% for videos
     for i = 1:opt.nFrames
-        [stat_rmse(i), stat_psnr(i), stat_ssim(i)] = doCalculations(vid_est{i},vid_org{i},L);
+        % statistics about image quality
+        [stat_rmse(i),stat_psnr(i),stat_ssim(i)] = doCalculations(vid_est{i},vid_org{i},L);
     end
     stat.elapsed_time = elapsedTime;
     stat.rmse = sum(stat_rmse)/(opt.nFrames);
@@ -40,12 +41,16 @@ if iscell(vid_est)
         
     end
     
+    stat
+    
 else 
 %% for images
     % statistics about optimization
     stat.elapsed_time = elapsedTime;
+
     % statistics about image quality
     [stat.rmse, stat.psnr, stat.ssim] = doCalculations(vid_est,vid_org,L);
+    
     if ~isempty(vid_bic)
         [stat.rmse_bicubic_interpolation, stat.psnr_bicubic_interpolation, stat.ssim_bicubic_interpolation] = doCalculations(vid_bic,vid_org,L);     
     end
@@ -66,16 +71,25 @@ function [stat_rmse, stat_psnr, stat_ssim] = doCalculations(img1,img2,L)
         img2 = img2(:, :, 1);
     end
 
+    % shave the border 
+    border = 5;
+    img1 = img1(border+1:end-border, border+1:end-border);
+    img2 = img2(border+1:end-border, border+1:end-border);
+
     img1 = double(img1);
     img2 = double(img2);
 
     if 0
-        if max(max(img1)) > 1
+        if max(max(img1)) > 50
             img1 = img1/256;
         end
-        if max(max(img2)) > 1
+
+        if max(max(img2)) > 50
             img2 = img2/256;
         end
+
+        img1(find(img1>1)) = 1;
+        img1(find(img1<0)) = 0;
     end
     
     img1(find(img1>1)) = 1;
