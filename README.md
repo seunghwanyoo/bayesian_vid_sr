@@ -4,8 +4,8 @@ This is Matlab implementation of a Bayesian video super-resolution method [1]. N
 [1] C. Liu, and D. Sun, "On Bayesian Adaptive Video Super Resolution," IEEE Trans. on?Pattern Analysis and Machine Intelligence (PAMI), Feb. 2014.
 [2] M. Drulea and S. Nedevschi, "Total variation regularization of local-global optical flow," in Proc. International Conference IEEE Intelligent Transportation Systems (ITSC), pp. 318-323, 2011.
 
-# simulation program
-SuperResolutionBayesian_s.m
+# demo program
+main_BayesianSR_city.m
 
 # description of folders
 /Data: contains test sequneces
