@@ -291,23 +291,23 @@ for l = 1:length(opt)
     result_filename = [result_path '/' datestr(now,'yyyymmdd_HHMM_') filename int2str(opt(l).test_video.scene)];
     if param.LINUX
         opt1 = opt(l); stat1 = stat(l);
-        save([result_filename '_stat_' num2str(j)], 'opt1', 'stat1');
+        save([result_filename '_stat_' num2str(l)], 'opt1', 'stat1');
     else
-        saveXLSData([result_filename '_stat_' num2str(j)],opt(l),stat(l));
+        saveXLSData([result_filename '_stat_' num2str(l)],opt(l),stat(l));
     end
     
     if param.SAVE_RESULT
         if param.BLUR_ESTIMATION
-            save([result_filename '_' num2str(j) '.mat'], 'vid_result','h_2d_est','stat');
+            save([result_filename '_' num2str(l) '.mat'], 'vid_result','h_2d_est','stat');
             %save([result_filename '_1.mat'], 'vid_result','h_2d_est','stat');
         else
-            save([result_filename '_' num2str(j) '.mat'], 'vid_result','stat');
+            save([result_filename '_' num2str(l) '.mat'], 'vid_result','stat');
         end
         if param.MAKE_VIDEO
-            writeMovie([result_filename '_' num2str(j) '_sr.avi'],vid_result);
-            writeMovie([result_filename '_' num2str(j) '_orig.avi'],vid_h_org);
-            writeMovie([result_filename '_' num2str(j) '_low.avi'],vid_l);
-            writeMovie([result_filename '_' num2str(j) '_bic.avi'],vid_bic);
+            writeMovie([result_filename '_' num2str(l) '_sr.avi'],vid_result);
+            writeMovie([result_filename '_' num2str(l) '_orig.avi'],vid_h_org);
+            writeMovie([result_filename '_' num2str(l) '_low.avi'],vid_l);
+            writeMovie([result_filename '_' num2str(l) '_bic.avi'],vid_bic);
         end
     end
 
